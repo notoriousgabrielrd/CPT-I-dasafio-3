@@ -34,13 +34,13 @@ app.put("/repositories/:id", (request, response) => {
   const updatedRepository = { title, url, techs };
 
   let repositoryIndex = repositories.findIndex(repository => repository.id === id);
-  console.log(">>>>>>>>>>>>>>", repositoryIndex)
+
   if (repositoryIndex < 0) {
     return response.status(404).json({ error: "Repository not found" });
   }
 
   const repository = { ...repositories[repositoryIndex], ...updatedRepository };
-  console.log('repo >>> ', repository)
+
   repositories[repositoryIndex] = repository;
 
   return response.json(repository);
